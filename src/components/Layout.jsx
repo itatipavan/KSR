@@ -35,6 +35,10 @@ export default function Layout({ children }) {
         <Button className="mobile-menu-button" type="text" onClick={() => setMobileOpen(true)} aria-label="Open Menu">☰</Button>
         <div className="brand-title">Ayurvedic Herbals</div>
         <div className="header-spacer" />
+        <div className="auth-links">
+          <a href="#/dashboard">Dashboard</a>
+          <a href="#/login">Login</a>
+        </div>
         <Badge count={items.reduce((s, i) => s + i.qty, 0)}>
           <a className="cart-link" href="#/cart" aria-label="Cart">🛒</a>
         </Badge>
