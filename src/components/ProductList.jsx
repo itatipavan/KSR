@@ -41,7 +41,7 @@ export default function ProductList({ type }) {
             value={branchId}
             onChange={setBranchId}
             options={branches.map((b) => ({ value: b.id, label: `${b.name} (${b.city})` }))}
-            style={{ minWidth: 220 }}
+            className="branch-select-control"
           />
         </div>
       </div>
