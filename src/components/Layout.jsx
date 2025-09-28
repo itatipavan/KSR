@@ -1,8 +1,8 @@
-import { Layout as AntLayout, Menu, Badge } from 'antd';
+import { Layout as AntLayout, Menu, Badge, Drawer, Button } from 'antd';
 import { useEffect, useState } from 'react';
 import { useCart } from '../store/CartContext.jsx';
 
-const { Header, Content, Footer } = AntLayout;
+const { Header, Content, Footer, Sider } = AntLayout;
 
 const navItems = [
   { key: '#/', label: 'Home' },
@@ -16,6 +16,7 @@ const navItems = [
 export default function Layout({ children }) {
   const { items } = useCart();
   const [current, setCurrent] = useState(window.location.hash || '#/');
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const onHash = () => setCurrent(window.location.hash || '#/');
@@ -23,23 +24,42 @@ export default function Layout({ children }) {
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
 
+  const goto = (key) => {
+    window.location.hash = key;
+    setMobileOpen(false);
+  };
+
   return (
     <AntLayout className="app-layout">
       <Header className="app-header">
+        <Button className="mobile-menu-button" type="text" onClick={() => setMobileOpen(true)} aria-label="Open Menu">☰</Button>
         <div className="brand-title">Ayurvedic Herbals</div>
         <Menu
           theme="dark"
           mode="horizontal"
           selectedKeys={[current]}
           items={navItems}
-          onClick={(e) => (window.location.hash = e.key)}
+          onClick={(e) => goto(e.key)}
           className="nav-menu"
         />
         <Badge count={items.reduce((s, i) => s + i.qty, 0)}>
           <a className="cart-link" href="#/cart" aria-label="Cart">🛒</a>
         </Badge>
       </Header>
-      <Content className="app-content">{children}</Content>
+
+      <AntLayout className="app-shell">
+        <Sider className="app-sider" breakpoint="lg" collapsedWidth={0} width={220} theme="light">
+          <div className="sider-section">Browse</div>
+          <Menu
+            mode="inline"
+            selectedKeys={[current]}
+            items={navItems}
+            onClick={(e) => goto(e.key)}
+          />
+        </Sider>
+        <Content className="app-content">{children}</Content>
+      </AntLayout>
+
       <Footer className="app-footer">
         <div className="footer-links">
           <a href="#/branches">Store Locator</a>
@@ -48,6 +68,18 @@ export default function Layout({ children }) {
         </div>
         <div>© {new Date().getFullYear()} Ayurvedic Herbals. GMP and AYUSH-compliant manufacturing.</div>
       </Footer>
+
+      <Drawer className="mobile-drawer" title="Menu" placement="left" open={mobileOpen} onClose={() => setMobileOpen(false)}>
+        <Menu
+          mode="inline"
+          selectedKeys={[current]}
+          items={navItems}
+          onClick={(e) => goto(e.key)}
+        />
+        <div className="drawer-cart">
+          <a className="cart-link" href="#/cart" onClick={() => setMobileOpen(false)}>🛒 Cart ({items.reduce((s, i) => s + i.qty, 0)})</a>
+        </div>
+      </Drawer>
     </AntLayout>
   );
 }
