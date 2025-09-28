@@ -84,3 +84,14 @@
 
 /* Home */
 .home-section { max-width: 1200px; margin: 0 auto; }
+
+/* Dashboard */
+.dashboard-section { max-width: 1200px; margin: 0 auto; }
+.dashboard-actions { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+
+/* POS */
+.pos-section { max-width: 1200px; margin: 0 auto; }
+.pos-toolbar { display: flex; gap: 8px; margin-bottom: 12px; }
+.pos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.pos-products, .pos-cart { min-height: 280px; }
+@media (max-width: 767px) { .pos-grid { grid-template-columns: 1fr; } }
