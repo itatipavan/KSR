@@ -34,14 +34,7 @@ export default function Layout({ children }) {
       <Header className="app-header">
         <Button className="mobile-menu-button" type="text" onClick={() => setMobileOpen(true)} aria-label="Open Menu">☰</Button>
         <div className="brand-title">Ayurvedic Herbals</div>
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          selectedKeys={[current]}
-          items={navItems}
-          onClick={(e) => goto(e.key)}
-          className="nav-menu"
-        />
+        <div className="header-spacer" />
         <Badge count={items.reduce((s, i) => s + i.qty, 0)}>
           <a className="cart-link" href="#/cart" aria-label="Cart">🛒</a>
         </Badge>
