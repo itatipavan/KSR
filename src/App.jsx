@@ -33,11 +33,23 @@ function useHashRoute() {
   return route
 }
 
+function Protected({ children }) {
+  const { isAuthed } = useAuth();
+  if (!isAuthed) return <Login />;
+  return children;
+}
+
 export default function App() {
   const { parts } = useHashRoute()
 
   let content = null
   if (parts.length === 0) content = <Home />
+  else if (parts[0] === 'login') content = <Login />
+  else if (parts[0] === 'dashboard') content = <Protected><Dashboard /></Protected>
+  else if (parts[0] === 'employees') content = <Protected><Employees /></Protected>
+  else if (parts[0] === 'payroll') content = <Protected><Payroll /></Protected>
+  else if (parts[0] === 'pos') content = <Protected><POS /></Protected>
+  else if (parts[0] === 'invoices') content = <Protected><Invoices /></Protected>
   else if (parts[0] === 'catalog') content = <ProductList />
   else if (parts[0] === 'manufactured') content = <ProductList type="manufactured" />
   else if (parts[0] === 'resale') content = <ProductList type="resale" />
@@ -50,8 +62,10 @@ export default function App() {
   else content = <Home />
 
   return (
-    <Layout>
-      {content}
-    </Layout>
+    <AuthProvider>
+      <Layout>
+        {content}
+      </Layout>
+    </AuthProvider>
   )
 }
