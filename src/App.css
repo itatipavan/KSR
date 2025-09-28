@@ -40,3 +40,35 @@
 .read-the-docs {
   color: #888;
 }
+
+/* App layout */
+.app-layout { min-height: 100vh; }
+.app-header { display: flex; align-items: center; }
+.brand-title { color: #fff; font-weight: 700; margin-right: 16px; }
+.nav-menu { flex: 1; min-width: 0; }
+.cart-link { color: #fff; font-size: 20px; margin-left: 12px; display: inline-block; }
+.app-content { padding: 24px; text-align: left; }
+.app-footer { text-align: center; }
+.footer-links { display: flex; gap: 16px; justify-content: center; margin-bottom: 8px; }
+.footer-links a { color: inherit; }
+
+/* Catalog */
+.catalog-section { max-width: 1200px; margin: 0 auto; }
+.catalog-toolbar { display: flex; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.branch-select { display: flex; gap: 8px; align-items: center; }
+.branch-select-control { min-width: 220px; }
+.product-sku, .product-vendor { color: #666; margin-bottom: 4px; }
+.product-price { font-weight: 700; margin: 8px 0; }
+.product-stock { margin-bottom: 8px; }
+.card-actions { display: flex; gap: 8px; }
+.loading-note, .empty-note { text-align: center; padding: 24px; color: #888; }
+
+/* Product detail */
+.detail-actions { display: flex; gap: 8px; margin-top: 16px; }
+
+/* Cart */
+.cart-summary { text-align: right; font-weight: 700; }
+.cart-actions { display: flex; justify-content: flex-end; margin-top: 12px; }
+
+/* Home */
+.home-section { max-width: 1200px; margin: 0 auto; }
