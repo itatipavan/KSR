@@ -1,5 +1,4 @@
 import { Layout as AntLayout, Menu, Badge } from 'antd';
-import { ShoppingCartOutlined, ShopOutlined, EnvironmentOutlined, TeamOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 import { useCart } from '../store/CartContext.jsx';
 
@@ -25,8 +24,8 @@ export default function Layout({ children }) {
   }, []);
 
   return (
-    <AntLayout style={{ minHeight: '100vh' }}>
-      <Header style={{ display: 'flex', alignItems: 'center' }}>
+    <AntLayout className="app-layout">
+      <Header className="app-header">
         <div className="brand-title">Ayurvedic Herbals</div>
         <Menu
           theme="dark"
@@ -34,20 +33,18 @@ export default function Layout({ children }) {
           selectedKeys={[current]}
           items={navItems}
           onClick={(e) => (window.location.hash = e.key)}
-          style={{ flex: 1, minWidth: 0 }}
+          className="nav-menu"
         />
         <Badge count={items.reduce((s, i) => s + i.qty, 0)}>
-          <a className="cart-link" href="#/cart" aria-label="Cart">
-            <ShoppingCartOutlined style={{ fontSize: 20, color: '#fff' }} />
-          </a>
+          <a className="cart-link" href="#/cart" aria-label="Cart">🛒</a>
         </Badge>
       </Header>
-      <Content style={{ padding: '24px' }}>{children}</Content>
-      <Footer style={{ textAlign: 'center' }}>
+      <Content className="app-content">{children}</Content>
+      <Footer className="app-footer">
         <div className="footer-links">
-          <a href="#/branches"><EnvironmentOutlined /> Store Locator</a>
-          <a href="#/careers"><TeamOutlined /> Careers</a>
-          <a href="#/catalog"><ShopOutlined /> Shop</a>
+          <a href="#/branches">Store Locator</a>
+          <a href="#/careers">Careers</a>
+          <a href="#/catalog">Shop</a>
         </div>
         <div>© {new Date().getFullYear()} Ayurvedic Herbals. GMP and AYUSH-compliant manufacturing.</div>
       </Footer>
