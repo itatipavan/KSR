@@ -8,6 +8,13 @@ import BranchLocator from './components/BranchLocator.jsx'
 import { CartPage, CheckoutPage } from './components/CartCheckout.jsx'
 import Orders from './components/Orders.jsx'
 import Careers from './components/Careers.jsx'
+import Login from './components/Login.jsx'
+import Dashboard from './components/Dashboard.jsx'
+import Employees from './components/Employees.jsx'
+import Payroll from './components/Payroll.jsx'
+import POS from './components/POS.jsx'
+import Invoices from './components/Invoices.jsx'
+import { AuthProvider, useAuth } from './store/AuthContext.jsx'
 
 function useHashRoute() {
   const [hash, setHash] = useState(window.location.hash || '#/')
