@@ -11,6 +11,12 @@ const navItems = [
   { key: '#/resale', label: 'Resale' },
   { key: '#/branches', label: 'Branches' },
   { key: '#/careers', label: 'Careers' },
+  { key: '#/dashboard', label: 'Dashboard' },
+  { key: '#/pos', label: 'Billing (POS)' },
+  { key: '#/invoices', label: 'Invoices' },
+  { key: '#/employees', label: 'Employees' },
+  { key: '#/payroll', label: 'Payroll' },
+  { key: '#/vendors', label: 'Vendors' },
 ];
 
 export default function Layout({ children }) {
