@@ -47,10 +47,21 @@
 .brand-title { color: #fff; font-weight: 700; margin-right: 16px; }
 .nav-menu { flex: 1; min-width: 0; }
 .cart-link { color: #fff; font-size: 20px; margin-left: 12px; display: inline-block; }
+.app-shell { min-height: calc(100vh - 134px); }
+.app-sider { border-right: 1px solid rgba(5, 5, 5, 0.06); }
+.sider-section { padding: 12px 16px; font-weight: 600; color: #555; }
 .app-content { padding: 24px; text-align: left; }
 .app-footer { text-align: center; }
 .footer-links { display: flex; gap: 16px; justify-content: center; margin-bottom: 8px; }
 .footer-links a { color: inherit; }
+.mobile-menu-button { display: none; color: #fff; font-size: 20px; margin-right: 8px; }
+.drawer-cart { margin-top: 12px; }
+
+/* Responsive */
+@media (max-width: 991px) {
+  .nav-menu { display: none; }
+  .mobile-menu-button { display: inline-flex; }
+}
 
 /* Catalog */
 .catalog-section { max-width: 1200px; margin: 0 auto; }
